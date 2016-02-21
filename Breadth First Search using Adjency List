@@ -56,7 +56,7 @@ void Graph::BFS(int s)
             if(!visited[*i])
             {
                 visited[*i] = true;
-                queue.push_back(*i);
+                coada.push_back(*i);
             }
         }
     }
