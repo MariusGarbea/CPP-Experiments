@@ -1,0 +1,15 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    int b[] = {10, 3, 30, 40, 50};
+    std::vector <int> myvector(b, b+sizeof(b)/4);
+    std::vector<int>::const_iterator p = find(myvector.begin(), myvector.end(), 3);
+    if(p!=myvector.end())
+        std::cout << p-myvector.begin();
+    else
+        std::cout << "Not Found!";
+    return 0;
+}
