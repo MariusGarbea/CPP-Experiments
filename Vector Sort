@@ -1,0 +1,25 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector <int> v;
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        int a;
+        int* p = &a;
+        cin>>a;
+        v.push_back(*p);
+        delete p;
+    }
+    sort(v.begin(), v.end());
+    for(vector<int>::iterator m=v.begin(); m<v.end(); m++)
+        cout<<*m<<" ";
+    return 0;
+}
+
