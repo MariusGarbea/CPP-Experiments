@@ -1,0 +1,67 @@
+#include <iostream>
+#include <queue>
+
+class Node
+{
+public:
+    int data;
+    Node *left, *right;
+    Node(int d){
+        data = d;
+        right = left = NULL;
+    }
+};
+
+class Solution{
+public:
+    Node* insert(Node* root, int data){
+        if(root == NULL)
+            return new Node(data);
+        else{
+            Node *cur;
+            if(data <= root->data){
+                cur = insert(root->left, data);
+                root->left = cur;
+            }
+            else{
+                cur = insert(root->right, data);
+                root->right = cur;
+            }
+        }
+        return root;
+    }
+    void BFS(Node* root){
+        std::queue <Node*> coada;
+        coada.push(root);
+        while(!coada.empty()){
+            Node* tmp = coada.front();
+            std::cout << tmp->data << " ";
+            if(tmp->left)
+                coada.push(tmp->left);
+            if(tmp->right)
+                coada.push(tmp->right);
+            coada.pop();
+        }
+    }
+};
+
+int main()
+{
+    Solution copac;
+    Node* root = NULL;
+    int n, data;
+    std::cin >> n;
+    while(n-->0){
+        std::cin >> data;
+        root = copac.insert(root, data);
+    }
+    std::cout << std::string(3, '\n');
+    std::cout << std::string(50, '-');
+    std::cout << std::endl;
+    std::cout << "Your elements in level-order are: ";
+    copac.BFS(root);
+    std::cout << std::endl;
+    std::cout << std::string(50, '-');
+    std::cout << std::string(3, '\n');
+    return 0;
+}
