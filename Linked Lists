@@ -1,0 +1,58 @@
+#include <iostream>
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node(int d)
+    {
+        data = d;
+        next = NULL;
+    }
+};
+
+class Solution
+{
+public:
+    Node* insertion(Node* head, int data)
+    {
+        Node* _new = new Node(data);
+        if(head == NULL)
+            head = _new;
+        else
+        {
+            Node *start = head;
+            while(start->next != NULL)
+                start = start->next;
+            start->next = _new;
+        }
+        return head;
+    }
+    void display(Node *head)
+    {
+        Node *start = head;
+        while(start != NULL)
+        {
+            std::cout << start->data << " ";
+            start = start->next;
+        }
+    }
+};
+
+int main()
+{
+    Node *head = NULL;
+    Solution s;
+    int data, N;
+    std::cin >> N;
+    while(N-->0)
+    {
+        std::cin >> data;
+        head = s.insertion(head, data);
+    }
+    std::cout << "Your elements are: ";
+    s.display(head);
+    std::cout << std::endl << std::endl << std::endl;
+    return 0;
+}
