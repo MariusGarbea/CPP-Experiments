@@ -1,0 +1,29 @@
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+#define forEach(n) for(i = 0; i<n; i++)
+
+int main() {
+    int n, i, p, q;
+    std::vector <int> a;
+    std::cout << "How many numbers do you want?\n";
+    std::cin >> n;
+    std::cout << "Enter them\n";
+    forEach(n){
+        std::cin >> p;
+        a.push_back(p);
+    }
+    std::sort(a.begin(), a.end());
+    std::cout << "How many numbers would you like to test?\n";
+    std::cin >> q;
+    std::cout << "Enter them\n";
+    forEach(q){
+        std::cin >> p;
+        if(std::binary_search(a.begin(), a.end(), p))
+            std::cout << "Yes" << " ";
+        else
+            std::cout << "No" << " ";
+        std::cout << std::lower_bound(a.begin(), a.end(), p) - a.begin() << std::endl;
+    }
+}
